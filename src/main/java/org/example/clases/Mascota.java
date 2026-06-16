@@ -15,6 +15,13 @@ public abstract class Mascota {
         this.dueño = dueño;
     }
 
+    public Mascota(int id, String nombre, int edad, double peso) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.peso = peso;
+    }
+
     public Mascota() {
     }
 
