@@ -1,10 +1,10 @@
 package org.example.Main;
 
 
-import org.example.clases.Dueño;
-import org.example.clases.Gato;
-import org.example.clases.Mascota;
-import org.example.clases.Perro;
+import org.example.clases.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,8 +14,10 @@ public class Main {
 
         Dueño dueño1 = new Dueño(1,"Dilan", "3004665648", "Carrera 123");
         List<Mascota> lstMascotas = new ArrayList<>();
+        List<Cita> lstCita = new ArrayList<>();
+        Veterinario veterinario1 = new Veterinario(1, "Carlos Torres", "Especialidad en gatos", "321456789");
 
-                lstMascotas.add(new Perro(1, "Dilan", 5, 18.5, true, "Firulais"));
+        lstMascotas.add(new Perro(1, "Dilan", 5, 18.5, true, "Firulais"));
         lstMascotas.add(new Perro(2, "Rocky", 3, 22.0, false, "Salchipapa"));
         lstMascotas.add(new Perro(3, "Max", 7, 25.5, true, "Hamburguesa"));
 
@@ -163,7 +165,43 @@ public class Main {
 
                 break;
                 case 4:
+                    boolean mascotaEncontradaCita = false;
                     System.out.println("\n4. Regitsrar cita");
+                    System.out.println("\n=== Regitrar cita ===");
+                    System.out.println("\n1. Id cita");
+                    int idCita = s.nextInt();
+                    System.out.println("\n2. Id de la mascota para la cita");
+                    int idMascota = s.nextInt();
+                    System.out.println("\n3. id del veterinario");
+                    int idVeterinario = s.nextInt();
+                    System.out.println("\n4. Fecha");
+                    String fechaCita = s.next();
+                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate fecha = LocalDate.parse(fechaCita, formato);
+                    System.out.println("\n5. Motivo");
+                    String motivo = s.next();
+
+                    for (Mascota mascota : lstMascotas){
+                        idEncontradas = mascota.getId();
+                        nombreMascota = mascota.getNombre();
+                        if (idEncontradas == idMascota){
+                            System.out.println("=== Mascota encontrada ===");
+                            System.out.println("Id : " + idEncontradas);
+                            System.out.println("Nombre : " + nombreMascota);
+                            mascotaEncontradaCita=true;
+                            Cita cita = new Cita(idCita, mascota, veterinario1, fecha, motivo);
+                            lstCita.add(cita);
+                            System.out.println(cita.toString());
+                            break;
+                        }
+                    }
+                    if (!mascotaEncontradaCita){
+                        System.out.println("Error: Mascota no econtrada cita no registrada");
+                    }
+
+
+
+
                     break;
                 case 5:
                     System.out.println("\n5. Ver cita");

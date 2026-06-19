@@ -8,18 +8,18 @@ public class Cita {
     private Veterinario veterinario;
     private LocalDate fecha;
     private String motivo;
-    private String estado;
+
 
     public Cita() {
     }
 
-    public Cita(int id, Mascota mascota, Veterinario veterinario, LocalDate fecha, String motivo, String estado) {
+    public Cita(int id, Mascota mascota, Veterinario veterinario, LocalDate fecha, String motivo) {
         this.id = id;
         this.mascota = mascota;
         this.veterinario = veterinario;
         this.fecha = fecha;
         this.motivo = motivo;
-        this.estado = estado;
+
     }
 
     public int getId() {
@@ -62,11 +62,14 @@ public class Cita {
         this.motivo = motivo;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "id=" + id +
+                ", mascota=" + mascota +
+                ", veterinario=" + veterinario +
+                ", fecha=" + fecha +
+                ", motivo='" + motivo + '\'' +
+                '}';
     }
 }

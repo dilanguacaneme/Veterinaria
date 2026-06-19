@@ -47,4 +47,14 @@ public class Veterinario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    @Override
+    public String toString() {
+        return "Veterinario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", especialidad='" + especialidad + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
+    }
 }
