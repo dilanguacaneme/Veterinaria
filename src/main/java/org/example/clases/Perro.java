@@ -22,8 +22,20 @@ public class Perro extends Mascota{
     public Perro(int idPerro, String nombrePerro, int edadPerro, double pesoPerro, String razaPerro) {
     }
 
+    public Perro(int idPerro, String nombrePerro, int edadPerro, double pesoPerro, boolean esVerdadero) {
+    }
+
     @Override
     public void hacerSonido() {
         System.out.println("Guau Guau!");
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "\nPerro{" +
+                "raza='" + raza + '\'' +
+                ", vacunado=" + vacunado +
+                '}';
     }
 }

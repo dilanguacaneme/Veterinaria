@@ -4,7 +4,7 @@ public abstract class Mascota {
     private int id;
     private String nombre;
     private int edad;
-    private double peso;
+    private Double peso;
     private Dueño dueño;
 
     public Mascota(int id, String nombre, int edad, double peso, Dueño dueño) {
@@ -67,4 +67,15 @@ public abstract class Mascota {
 
     //Metodos
     public abstract void hacerSonido();
+
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", dueño=" + dueño +
+                '}';
+    }
 }
