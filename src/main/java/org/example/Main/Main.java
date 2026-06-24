@@ -12,11 +12,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //Dueño
         Dueño dueño1 = new Dueño(1,"Dilan", "3004665648", "Carrera 123");
-        List<Mascota> lstMascotas = new ArrayList<>();
-        List<Cita> lstCita = new ArrayList<>();
+
+        //Veterinario
         Veterinario veterinario1 = new Veterinario(1, "Carlos Torres", "Especialidad en gatos", "321456789");
 
+        //Mascotas
+        List<Mascota> lstMascotas = new ArrayList<>();
         lstMascotas.add(new Perro(1, "Dilan", 5, 18.5, true, "Firulais"));
         lstMascotas.add(new Perro(2, "Rocky", 3, 22.0, false, "Salchipapa"));
         lstMascotas.add(new Perro(3, "Max", 7, 25.5, true, "Hamburguesa"));
@@ -24,6 +27,49 @@ public class Main {
         lstMascotas.add(new Gato(4, "Michi", 2, 4.2, "Negro", true));
         lstMascotas.add(new Gato(5, "Pelusa", 1, 3.8, "Blanco", false));
         lstMascotas.add(new Gato(6, "Tom", 6, 5.1, "Gris", true));
+
+        //Citas
+        List<Cita> lstCita = new ArrayList<>();
+        lstCita.add(new Cita(
+                1,
+                lstMascotas.get(0),
+                veterinario1,
+                LocalDate.of(2026, 6, 23),
+                "Vacunacion"
+        ));
+
+        lstCita.add(new Cita(
+                2,
+                lstMascotas.get(1),
+                veterinario1,
+                LocalDate.of(2026, 6, 25),
+                "Control general"
+        ));
+
+        lstCita.add(new Cita(
+                3,
+                lstMascotas.get(2),
+                veterinario1,
+                LocalDate.of(2026, 7, 1),
+                "Desparasitacion"
+        ));
+
+        lstCita.add(new Cita(
+                4,
+                lstMascotas.get(3),
+                veterinario1,
+                LocalDate.of(2026, 7, 5),
+                "Revision de peso"
+        ));
+
+        lstCita.add(new Cita(
+                5,
+                lstMascotas.get(4),
+                veterinario1,
+                LocalDate.of(2026, 7, 10),
+                "Control postoperatorio"
+        ));
+
         int opcion = 0;
 
         Scanner s = new Scanner(System.in);
@@ -197,6 +243,7 @@ public class Main {
                     }
                     if (!mascotaEncontradaCita){
                         System.out.println("Error: Mascota no econtrada cita no registrada");
+
                     }
 
 
@@ -205,6 +252,24 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("\n5. Ver cita");
+                    System.out.println("=== Citas hasta la fecha ===");
+                    for (Cita cita: lstCita){
+
+                        cita.getId();
+                        cita.getFecha();
+                        cita.getMascota();
+                        cita.getMotivo();
+                        cita.getVeterinario();
+
+                        System.out.println("============");
+                        System.out.println("\nCita numero " + cita.getId() +
+                                "\n Fecha :" + cita.getFecha() +
+                                "\n Mascota :" + cita.getMascota() +
+                                "\n Motivo :" + cita.getMotivo() +
+                                "\n Veterinario :" + cita.getVeterinario()
+                        );
+                    }
+
                     break;
                 case 6:
                     System.out.println("\nGracias por usar este sistema de veteniaria");
