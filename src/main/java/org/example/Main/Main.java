@@ -16,7 +16,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int opcion = 0;
 
-        while (opcion != 8) {
+        while (opcion != 9) {
             System.out.println("\n=== VETERINARIA ===");
             System.out.println("1. Registrar dueño");
             System.out.println("2. Listar dueños");
@@ -25,7 +25,8 @@ public class Main {
             System.out.println("5. Buscar mascota por ID");
             System.out.println("6. Registrar cita");
             System.out.println("7. Ver citas");
-            System.out.println("8. Salir");
+            System.out.println("8. Vacunar mascota");
+            System.out.println("9. Salir");
 
             System.out.print("\nSeleccione una opcion: ");
             opcion = s.nextInt();
@@ -54,6 +55,9 @@ public class Main {
                     citaService.verCitas();
                     break;
                 case 8:
+                    mascotaService.vacunarMascota(s);
+                    break;
+                case 9:
                     System.out.println("\nGracias por usar este sistema de veterinaria.");
                     break;
                 default:

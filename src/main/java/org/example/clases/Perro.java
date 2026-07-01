@@ -1,6 +1,8 @@
 package org.example.clases;
 
-public class Perro extends Mascota{
+import org.example.interfaces.IVacunable;
+
+public class Perro extends Mascota implements IVacunable {
     private String raza;
     private boolean vacunado;
 
@@ -37,5 +39,18 @@ public class Perro extends Mascota{
                 "raza='" + raza + '\'' +
                 ", vacunado=" + vacunado +
                 '}';
+    }
+
+    @Override
+    public void vacunar() {
+        //si NO ESTA vacunado
+        if (!vacunado){
+            vacunado = true;
+        }
+    }
+
+    @Override
+    public boolean estaVacunado() {
+        return vacunado;
     }
 }

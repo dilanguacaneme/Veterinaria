@@ -4,6 +4,7 @@ import org.example.clases.Gato;
 import org.example.clases.Mascota;
 import org.example.clases.Perro;
 import org.example.clases.Dueño;
+import org.example.interfaces.IVacunable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -115,6 +116,48 @@ public class MascotaService {
             System.out.println("=== Mascota encontrada ===");
             System.out.println("Id : " + buscarId);
             System.out.println("Mascota : " + mascota);
+        } else {
+            System.out.println("Error: Mascota no encontrada.");
+        }
+    }
+
+    public void vacunarMascota (Scanner s){
+        System.out.println("\n=== Vacunar mascota ===");
+        System.out.println("\n=== Id de la mascota que desea vacunar ===");
+        int mascotaAVacunar = s.nextInt();
+
+        Mascota  mascota = mapMascotas.get(mascotaAVacunar);
+
+        if (mascota != null) {
+            System.out.println("=== Mascota encontrada ===");
+            System.out.println("Id : " + mascotaAVacunar);
+            System.out.println("Mascota : " + mascota);
+            if (mascota instanceof IVacunable vacunable){
+
+                System.out.println("Estado : " + vacunable.estaVacunado());
+                System.out.println("Desea vacunarlo?");
+                System.out.println("1. Si");
+                System.out.println("2. No");
+                int opcionVacuna = s.nextInt();
+
+                switch (opcionVacuna){
+                    case 1:
+                        if (vacunable.estaVacunado()){
+                            System.out.println("Las mascota ya se encuentra vacunada, no se puede vacunar de nuevo");
+                        } else  {
+                            vacunable.vacunar();
+                            System.out.println("Mascota vacunada correctamente");
+                            System.out.println("Estado : " + vacunable.estaVacunado());
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Mascota no vacunada");
+                        System.out.println("Estado : " + vacunable.estaVacunado());
+                        break;
+                }
+
+            }
+
         } else {
             System.out.println("Error: Mascota no encontrada.");
         }

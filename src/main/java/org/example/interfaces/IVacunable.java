@@ -1,4 +1,4 @@
-package org.example.clases;
+package org.example.interfaces;
 
 public interface IVacunable {
     void vacunar();
