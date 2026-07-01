@@ -47,6 +47,10 @@ public class MascotaService {
                 System.out.println("\n=== Registrar Perro ===");
                 System.out.print("Id Perro: ");
                 int idPerro = s.nextInt();
+                if (mapMascotas.containsKey(idPerro)) {
+                    System.out.println("Error: Ya existe un perro con ese ID.");
+                    return;
+                }
                 System.out.print("Nombre del perro: ");
                 String nombrePerro = s.next();
                 System.out.print("Edad del perro: ");
@@ -67,6 +71,10 @@ public class MascotaService {
                 System.out.println("\n=== Registrar Gato ===");
                 System.out.print("Id Gato: ");
                 int idGato = s.nextInt();
+                if (mapMascotas.containsKey(idGato)) {
+                    System.out.println("Error: Ya existe un gato con ese ID.");
+                    return;
+                }
                 System.out.print("Nombre del gato: ");
                 String nombreGato = s.next();
                 System.out.print("Edad del gato: ");
